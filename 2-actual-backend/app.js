@@ -7,6 +7,10 @@ const app = express();
 
 app.use(bodyParser.json());
 
+app.use("/" , (req , res) => {
+  res.send("server is running")
+})
+
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST');
@@ -38,4 +42,4 @@ app.post('/items', async (req, res) => {
   res.status(201).json({ message: 'Stored new item.', item: newItem });
 });
 
-app.listen(8080);
+app.listen(8080 , console.log("server started on PORT 8080"));
